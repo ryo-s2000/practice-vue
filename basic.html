@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .v-enter-active, .v-leave-action{
+               transition: opacity 1s;
+            }
+            .v-enter .v-leave-to{
+                opacity: 0;
+            }
+        </style>
+    </head>
+    <body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <input v-model="message">
+        <ol>
+            <li v-for="item in list">{{ item }}</li>
+        </ol>
+        <button v-on:click="handleClick">Click</button>
+        <button v-on:click="show=!show">切り替え</button>
+        <transition>
+            <p v-if="show">Hello Vue.js!</p>
+        </transition>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '初期メッセージ',
+                list: ['りんご', 'バナナ', 'いちご'],
+                show: true
+            },
+            methods: {
+                handleClick: function (event) {
+                    alert(event.target)
+                }
+            }
+        });
+        app.list.push('キウイ');
+    </script>
+    </body>
+</html>
