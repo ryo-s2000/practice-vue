@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <p v-bind:class="{ child: isChild, 'is-active': isActive }">Text</p>
+            <p v-bind:style="{ color: textColor, backgrondColor: bgColor }">Text</p>
+
+            <button v-on:click="increment">"color"styleを操作する</button>
+        </div>
+        <div id="app_2">
+            <p v-bind:class="classObject">Text</p>
+            <p v-bind:style="styleObject">Text</p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app;
+            var app_2;
+
+            app = new Vue({
+                el: '#app',
+                data: {
+                    isChild: true,
+                    isActive: true,
+                    textColor: 'red',
+                    bgColor: 'lightgray'
+                },
+                methods: {
+                    increment: function(){
+                        this.textColor = '#000'
+                    }
+                }
+            });
+            app_2 = new Vue({
+                el: '#app_2',
+                data: {
+                    classObject: {
+                        child: true,
+                        'is-active': false
+                    },
+                    styleObject: {
+                        color: 'red',
+                        backgrondColor: 'lightgray'
+                    }
+                },
+            });
+        </script>
+    </body>
+</html>

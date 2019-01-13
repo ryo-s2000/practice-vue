@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="app_1">
+            <p>{{ count }}回クリックしたよ！</p>
+            <button v-on:click="increment">カウントを増やす</button>
+        </div>
+        <div id="app_2">
+            <p>{{ count }}回クリックしたよ！</p>
+            <button v-on:click="increment">カウントを増やす</button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app_1 = new Vue({
+                el: '#app_1',
+                data: {
+                    count: 0
+                },
+                methods: {
+                    increment: function(){
+                        this.count += 1
+                    }
+                }
+            });
+            var app_2 = new Vue({
+                el: '#app_2',
+                data: {
+                    count: 0
+                },
+                methods: {
+                    increment: function(){
+                        this.count += 1
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

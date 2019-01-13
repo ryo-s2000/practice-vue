@@ -6,28 +6,44 @@
     </head>
     <body>
         <div id="app">
+            <p>Hello {{ message }}</p>
+            <p>{{ message.length }}</p>
+            <p>{{ message.length >= 10 ? '10文字以上' : '10文字以下' }}</p>
+            <p>{{ list[2] }}</p>
+            <p>{{ list[num] }}</p>
+            <p>1+1={{ 1 + 1 }}</p>
+            <p>{{ Math.round(3.14) }}</p>
+            <div v-bind:scroll-top.prop="scroll"></div>
+            <input type="js" v-bind:value="message">
+            <input type="js" :value="message">
+            <pre>{{ $data }}</pre>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
         <script>
             var app = new Vue({
                 el: '#app',
                 data: {
-                    message: 'Vue.js'
+                    message: 'Vue.js',
+                    list: ['りんご','バナナ','みかん'],
+                    num: 1,
+                    scroll: 0
                 },
-                computed: {
-                    computedMessage: function () {
-                        return this.message + '!';
-                    }
-                },
-                created: function () {
-
-                },
-                methods: {
-                    myMethod: function () {
-                        
-                    }
+                method: function () {
+                    this.scroll = 100
                 }
-
+                // computed: {
+                //     computedMessage: function () {
+                //         return this.message + '!';
+                //     }
+                // },
+                // created: function () {
+                //
+                // },
+                // methods: {
+                //     myMethod: function () {
+                //
+                //     }
+                // }
             });
         </script>
     </body>
