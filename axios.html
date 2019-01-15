@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="(item, index) in list" v-bind:key="item.id">
+                    ID.{{ item.id }} {{ item.name }} {{ item.hp }}
+                </li>
+            </ul>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    list: []
+                },
+                created: function(){
+                    axios.get('list.json').then(function(response) {
+                        this.list = response.data;
+                    }.bind(this)).catch(function(e){
+                        console.log(e);
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>
+
+<!-- ChromeにてAjaxでローカルファイルにアクセス https://qiita.com/cigalecigales/items/33afaa42f91542ffa62e -->

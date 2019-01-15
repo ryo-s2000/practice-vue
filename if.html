@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div v-if="ok">v-if条件による描写</div>
+            <div v-show="ok">v-show条件による描写</div>
+
+            <template v-if="ok">
+                <p>コメント</p>
+                <span>コメント</span>
+            </template>
+
+            <div v-if="type === 'A'">
+                type は A
+            </div>
+            <div v-if="type === 'B'">
+                type は B
+            </div>
+            <div v-else>
+                全ての条件を満たしておりません
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    ok: false
+                }
+            });
+        </script>
+    </body>
+</html>
