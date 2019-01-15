@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <button v-on:click="handleClick">クリック</button>
+            <button @click="handleClick">クリック</button>
+
+            <div v-on:click.right="handler">example</div>
+            <div v-on:click.right.prevent="handler">example</div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                methods: {
+                    handleClick: function(){
+                        alert('クリックしたよ！')
+                    },
+                    handler: function(comments){
+                        console.log(comments)
+                    }
+                },
+            });
+        </script>
+    </body>
+</html>
