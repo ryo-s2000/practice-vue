@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                height: 3000px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div v-bind:class="{ compact: scrollY > 200 }">
+                200pxより下にスクロールしたら .compact を付与
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    scrollY: 0,
+                    timer: null,
+                },
+                created: function(){
+                    window.addEventListener('scroll', this.handleScroll)
+                },
+                beforeDestroy: function(){
+                    window.removeEventListener('scroll', this.handleScroll)
+                },
+                methods: {
+                    handleScroll: function(){
+                        if(this.timer == null){
+                            this.timer = setTimeout(function(){
+                                this.scrollY = window.scrollY;
+                                clearTimeout(this.timer);
+                                this.timer = null;
+                            }.bind(this), 200);
+                        }
+                    }
+                },
+            });
+        </script>
+    </body>
+</html>

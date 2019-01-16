@@ -7,10 +7,13 @@
     <body>
         <div id="app">
             <button v-on:click="handleClick">クリック</button>
-            <button @click="handleClick">クリック</button>
+            <button @click="handleClick">@クリック</button>
+            <button @click.shift="handleShiftClick">shift keyを押しながらクリック</button>
 
             <div v-on:click.right="handler">example</div>
-            <div v-on:click.right.prevent="handler">example</div>
+            <div v-on:click.right.prevent="handler">example(コンテキストメニューが表示されていない)</div>
+
+            <input v-on:keydown.up.down.left.right="arrowButton">
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
         <script>
@@ -18,10 +21,16 @@
                 el: '#app',
                 methods: {
                     handleClick: function(){
-                        alert('クリックしたよ！')
+                        alert('クリックしたよ！');
+                    },
+                    handleShiftClick: function(){
+                        alert('シフトを押しながらクリックしたよ！');
                     },
                     handler: function(comments){
-                        console.log(comments)
+                        alert(comments);
+                    },
+                    arrowButton: function(){
+                        alert('矢印ボタンを押したね');
                     }
                 },
             });

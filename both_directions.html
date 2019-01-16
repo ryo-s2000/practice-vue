@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="message1">
+            <input v-model="message">
+            <p>{{ message }}</p>
+        </div>
+
+        <div id="message2">
+            <textarea v-model="message"></textarea>
+            <pre>{{ message }}</pre>
+        </div>
+
+        <div id="checkbox">
+            <label>
+                <input type="checkbox" v-model="val">{{ val }}
+            </label>
+        </div>
+
+        <div id="checkboxes">
+            <label>
+                <input type="checkbox" v-model="val" value="A">
+            </label>
+            <label>
+                <input type="checkbox" v-model="val" value="B">
+            </label>
+            <label>
+                <input type="checkbox" v-model="val" value="C">
+            </label>
+            <p>{{ val }}</p>
+        </div>
+
+        <div id="select">
+            <select v-model="val">
+                <option disabled="disabled">選択してください</option>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+            </select>
+            <p>{{ val }}</p>
+        </div>
+
+        <div id="selects">
+            <select v-model="val" multiple>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+            </select>
+            <p>{{ val }}</p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var message1;
+            var message2;
+            var checkbox;
+            var checkboxes;
+            var select;
+            var selects;
+
+            message1 = new Vue({
+                el: '#message1',
+                data: {
+                    message: 'Hello!'
+                }
+            });
+            message2 = new Vue({
+                el: '#message2',
+                data: {
+                    message: 'Hello!'
+                }
+            });
+            checkbox = new Vue({
+                el: '#checkbox',
+                data: {
+                    val: true
+                }
+            });
+            checkboxes = new Vue({
+                el: '#checkboxes',
+                data: {
+                    val: []
+                }
+            });
+            select = new Vue({
+                el: '#select',
+                data: {
+                    val: ''
+                }
+            });
+            selects = new Vue({
+                el: '#selects',
+                data: {
+                    val: []
+                }
+            });
+        </script>
+    </body>
+</html>
