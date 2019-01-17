@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <p>180°は{{ 180 | radian | round }}ラジアンだよ。</p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                filters: {
+                    round: function(val){
+                        return Math.round(val * 100) / 100
+                    },
+                    radian: function(val){
+                        return val * Math.PI / 180
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

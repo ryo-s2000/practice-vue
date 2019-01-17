@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <ol>
+                <li>{{ computedData }}</li>
+                <li>{{ computedData }}</li>
+            </ol>
+            <ol>
+                <li>{{ methodsData() }}</li>
+                <li>{{ methodsData() }}</li>
+            </ol>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                computed: {
+                    computedData: function(){ return Math.random() }
+                    //一回しか作られていない、おそらくイベントが一度しか走らないから
+                },
+                methods: {
+                    methodsData: function(){ return Math.random() }
+                }
+            });
+        </script>
+    </body>
+</html>
