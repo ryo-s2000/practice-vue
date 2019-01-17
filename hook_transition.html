@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <transition v-on:enter="enter" v-on:after-enter="afterEnter">
+                <div v-if="show">example</div>
+            </transition>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                methods: {
+                    enter: function(el, done){
+                        console.log('enter');
+                        setTimeout(done, 1000);
+                    },
+                    afterEnter: function(el){
+                        console.log('afterEnter');
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

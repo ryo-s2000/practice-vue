@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .v-enter-active, .v-leave-active{
+            transition: opacity 1s, transform 1s;
+        }
+        .v-enter{
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        .v-leave-to{
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <button v-on:click="show=!show">削除</button>
+            <transition appear>
+                <div v-show="show">トランディションさせたい要素</div>
+            </transition>
+
+            <transition mode="out-in">
+                <div v-if="show" key="a">TRUE</div>
+                <div v-else key="b">FALSE</div>
+            </transition>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    show: true
+                }
+            });
+        </script>
+    </body>
+</html>
