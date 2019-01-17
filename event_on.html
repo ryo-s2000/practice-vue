@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 親要素、見た目は子の要素に上書きされる -->
+            <comp-child v-on:childs-event="parentsMethod"></comp-child>
+            <comp-child v-on:childs-event="parentsMethod_2"></comp-child>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            //詳しい設計図、子要素
+            Vue.component('comp-child', {
+                template: '<button v-on:click="handleClick">イベント発火</button>',
+                //見た目の指定、ついでにメソッドの定義もしている
+                methods: {
+                    handleClick: function(){
+                        this.$emit('childs-event');
+                        //指定したメソッドを受ける場所、どうやら親要素に指定されていたchilds-eventを発火しているらしい
+                    }
+                }
+            });
+
+            //処理内容
+            new Vue({
+                el: '#app',
+                methods: {
+                    parentsMethod: function(){
+                        alert('イベントをキャッチしました!');
+                    },
+                    parentsMethod_2: function(){
+                        alert('2目の方のイベントをキャッチしました!');
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

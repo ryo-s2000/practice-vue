@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <comp-child>
+                <header slot="header">
+                    Hello Vue.js!!
+                </header>
+                Vue.jsはJavaScriptのフレームワークです。
+            </comp-child>
+
+            <section class="comp-child">
+                <header>
+                    <slot name="header">デフォルトタイトル</slot>
+                </header>
+                <div class="content">
+                    <slot>デフォルトコンテンツ</slot>
+                </div>
+                <slot name="footer"></slot>
+            </section>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            //slotで囲むと書き換えることができるので汎用的な処理を記述できる。
+            var app = new Vue({
+                el: '#app',
+                data: {
+
+                }
+            });
+        </script>
+    </body>
+</html>
